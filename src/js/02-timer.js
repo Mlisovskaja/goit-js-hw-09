@@ -13,7 +13,7 @@ let timeToUpdate = 0;
 let initialDate = 0;
 let chosenDate = 0;
 
-dateInput = flatpickr('#datetime-picker', {
+const options = {
     enableTime: true,
     time_24hr: true,
     defaultDate: new Date(),
@@ -33,7 +33,11 @@ dateInput = flatpickr('#datetime-picker', {
     
         }
     }
-});
+};
+
+dateInput = flatpickr('#datetime-picker', options);
+    
+    
 
 const timer = {
     timerId: null,
