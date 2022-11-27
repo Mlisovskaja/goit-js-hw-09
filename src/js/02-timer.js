@@ -1,5 +1,4 @@
 import flatpickr from "flatpickr";
-const flatpickr = require("flatpickr");
 import "flatpickr/dist/flatpickr.min.css";
 
 const startBtn = document.querySelector('button[data-start]');
