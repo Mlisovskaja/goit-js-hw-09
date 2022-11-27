@@ -13,6 +13,28 @@ let timeToUpdate = 0;
 let initialDate = 0;
 let chosenDate = 0;
 
+dateInput = flatpickr('#datetime-picker', {
+    enableTime: true,
+    time_24hr: true,
+    defaultDate: new Date(),
+    maxDate: new Date().fp_incr(100),
+    minuteIncrement: 1,
+    onClose(selectedDates) {
+        console.log(selectedDates[0]);
+        initialDate = new Date;
+        chosenDate = selectedDates[0].getTime();
+        if (initialDate > chosenDate) {
+            window.alert("Please choose a date in the future");
+            return;
+        }
+        else {
+            timeToUpdate = convertMs(chosenDate - initialDate);
+            startBtn.removeAttribute('disabled');
+    
+        }
+    }
+});
+
 const timer = {
     timerId: null,
     isActive: false,
@@ -44,28 +66,6 @@ function stopTimer(interval) {
 
 startBtn.setAttribute('disabled', 'disabled');
 
-
-dateInput = flatpickr('#datetime-picker', {
-    enableTime: true,
-    time_24hr: true,
-    defaultDate: new Date(),
-    maxDate: new Date().fp_incr(100),
-    minuteIncrement: 1,
-    onClose(selectedDates) {
-        console.log(selectedDates[0]);
-        initialDate = new Date;
-        chosenDate = selectedDates[0].getTime();
-        if (initialDate > chosenDate) {
-            window.alert("Please choose a date in the future");
-            return;
-        }
-        else {
-            timeToUpdate = convertMs(chosenDate - initialDate);
-            startBtn.removeAttribute('disabled');
-    
-        }
-    }
-});
 
 function addLeadingZero(value) {
     return String(value).padStart(2, '0');
