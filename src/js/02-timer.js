@@ -35,8 +35,7 @@ const options = {
     }
 };
 
-dateInput = flatpickr('#datetime-picker', options);
-    
+flatpickr('#datetime-picker', options);
     
 
 const timer = {
